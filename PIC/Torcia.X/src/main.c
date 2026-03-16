@@ -28,87 +28,115 @@
 // constants
 ////////////////////////////////////////////////////////////////////////////////
 #define MS_REFRESH 10
+
+#define DEBOUNCE_CYCLES 3
+#define LONG_PRESS 100
+
+
 #define H0 output_port.DOUT0
 #define H1 output_port.DOUT1
 #define SW1 sw_port.SW1
 #define DL1 led_port.DL1
 
+#define OFF 0
+#define PRG1 1
+#define PRG2 2
+#define PRG3 3
+#define FLASH 4
+
+
+uint8_t sw1_last = 1;
+uint8_t sw1_counter = 0;
+uint8_t sw1_stable = 1;
 ////////////////////////////////////////////////////////////////////////////////
 // private functions
 ////////////////////////////////////////////////////////////////////////////////
-void PRG1(){
-    DL1 = 1;
+void debounce_sw1(void) {
+    if (SW1 != sw1_last) {
+        sw1_last = SW1;
+        sw1_counter = 0;
+    } else {
+        if (sw1_counter < DEBOUNCE_CYCLES) {
+            sw1_counter++;
+        }
+        if (sw1_counter >= DEBOUNCE_CYCLES) {
+            sw1_stable = sw1_last;
+        }
+    }
 }
-void PRG2(){
+void pwm_cycle(uint8_t duty_percent) {
+    uint8_t on_time = duty_percent;
+    uint8_t off_time = 100 - on_time;
+    
     DL1 = 1;
-    __delay_ms(5);
+    __delay_ms(on_time / 10);
     DL1 = 0;
-    __delay_ms(5);
-}
-void PRG3(){
-    DL1 = 1;
-    __delay_ms(1);
-    DL1 = 0;
-    __delay_ms(9);
-}
-void FLASH(){
-    DL1 = 1;
-    __delay_ms(500);
-    DL1 = 0;
-    __delay_ms(500);
+    __delay_ms(off_time / 10);
 }
 
-
-void main(){
+void main(void) {
     eh100_init();
     DL1 = 0;
     
-    uint8_t program = 0;  
-    uint8_t lastSW1 = 1;
-    uint16_t SW1Counter = 0;
-    bool buttonReleased = false;
+    uint8_t current_program = OFF;
+    uint16_t button_press_counter = 0;
+    bool button_pressed = false;
+    bool button_released = false;
     
     while (1) {
+        debounce_sw1();
         
-        
-        if (SW1 == 0) { 
-            SW1Counter++;
-            buttonReleased = false;
-        } else {  
-            if (SW1Counter > 0 && !buttonReleased) {
-               
-                if (SW1Counter >= 100) {
-                    program = (program == 0) ? 1 : 0;  
+        if (sw1_stable == 0) {
+            if (!button_pressed) {
+                button_pressed = true;
+                button_released = false;
+                button_press_counter = 0;
+            }
+            button_press_counter++;
+        } else {
+            if (button_pressed && !button_released) {
+                button_released = true;
+                
+                if (button_press_counter >= LONG_PRESS) {
+                    if (current_program == OFF) {
+                        current_program = PRG1;
+                    } else {
+                        current_program = OFF;
+                    }
                 } else {
-                    
-                    if (program != 0) {
-                        program = (program % 4) + 1;  
+                    if (current_program != OFF) {
+                        current_program = (current_program % 4) + 1;
+                        if (current_program > 4) current_program = 1;
                     }
                 }
             }
-            SW1Counter = 0;
-            buttonReleased = true;
+            button_pressed = false;
         }
         
-        
-        switch (program) {
-            case 0:
+        switch (current_program) {
+            case OFF:
                 DL1 = 0;
                 break;
-            case 1:
-                PRG1();
+            case PRG1:
+                DL1 = 1;
                 break;
-            case 2:
-                PRG2();
+            case PRG2:
+                pwm_cycle(50);
                 break;
-            case 3:
-                PRG3();
+            case PRG3:
+                pwm_cycle(10);
                 break;
-            case 4:
-                FLASH();
+            case FLASH:
+                DL1 = 1;
+                __delay_ms(500);
+                DL1 = 0;
+                __delay_ms(500);
                 break;
         }
-        __delay_ms(10);
-      }
+        
+        if (current_program == OFF || current_program == PRG1) {
+            __delay_ms(MS_REFRESH);
+        }
+    }
 }
 
