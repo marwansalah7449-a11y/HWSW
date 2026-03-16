@@ -65,15 +65,21 @@ void debounce_sw1(void) {
     }
 }
 void pwm_cycle(uint8_t duty_percent) {
-    uint8_t on_time = duty_percent;
-    uint8_t off_time = 100 - on_time;
-    
-    DL1 = 1;
-    __delay_ms(on_time / 10);
-    DL1 = 0;
-    __delay_ms(off_time / 10);
+    switch(duty_percent) {
+        case 50:  
+            DL1 = 1;
+            __delay_ms(5);
+            DL1 = 0;
+            __delay_ms(5);
+            break;
+        case 10: 
+            DL1 = 1;
+            __delay_ms(1);
+            DL1 = 0;
+            __delay_ms(9);
+            break;
+    }
 }
-
 void main(void) {
     eh100_init();
     DL1 = 0;
