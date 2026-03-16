@@ -50,7 +50,7 @@ void main(){
     while (1) {
         H0 = 0;
         H1 = 1;
-        __delay_ms(10);
+        __delay_ms(9);
         H0 = 1;
         H1 = 1;
         __delay_ms(1);
