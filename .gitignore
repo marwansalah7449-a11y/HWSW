@@ -1,0 +1,30 @@
+﻿# MPLAB X
+dist/
+build/
+*.o
+*.d
+*.p1
+*.d1
+*.lst
+*.map
+*.hex
+*.cof
+*.elf
+*.eep
+*.sym
+
+# IDE
+.DS_Store
+nbproject/private/
+nbproject/Makefile-*.mk
+nbproject/Package-*.bash
+
+# Sistema operativo
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Dependencies
+*.lib
+*.a
