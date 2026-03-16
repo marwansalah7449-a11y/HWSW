@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+                              
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" data-xwiki-paged-media="paper" data-xwiki-reference="xwiki:software-tools.ides.x.debugging.debug-toolbar.WebHome" data-xwiki-document="software-tools.ides.x.debugging.debug-toolbar.WebHome" data-xwiki-wiki="xwiki" data-xwiki-space="software-tools.ides.x.debugging.debug-toolbar" data-xwiki-page="WebHome" data-xwiki-isnew="false" data-xwiki-version="33.1" data-xwiki-rest-url="/xwiki/rest/wikis/xwiki/spaces/software-tools/spaces/ides/spaces/x/spaces/debugging/spaces/debug-toolbar/pages/WebHome" data-xwiki-locale="" data-xwiki-form-token="HMHGgV8SSAtk3BaUVewMiQ" data-xwiki-action="view">
+  <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                                                    <title>MPLAB® X IDE Debug Toolbar - Developer Help</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/xwiki/bin/skin/XWiki/DefaultSkin/icons.xwiki.favicon16.png" type="image/png" />
+        <link rel="icon" href="/xwiki/bin/skin/XWiki/DefaultSkin/icons.xwiki.favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/xwiki/bin/skin/XWiki/DefaultSkin/icons.xwiki.favicon144.png" />
+                      <link rel="alternate" type="application/x-wiki" title="Edit" href="/xwiki/bin/edit/software-tools/ides/x/debugging/debug-toolbar/WebHome" />
+                    <link rel="canonical" href="/xwiki/bin/view/software-tools/ides/x/debugging/debug-toolbar/" />
+                                  <meta name="google-site-verification" content="_qnchqI4zFQqvfYPdEcExAIoYioGmPfi4OCluWzaKhU" />
+<meta name="revisit-after" content="7 days" />
+<meta name="description" content="MPLAB® X IDE Debug Toolbar" />
+<meta name="keywords" content="wiki _$prv_" />
+<meta name="rating" content="General" />
+<meta name="author" content="Mark Reynolds" />
+  <script type='importmap'>{"imports":{"vue-i18n":"/xwiki/webjars/wiki%3Axwiki/vue-i18n/11.1.12/dist/vue-i18n.esm-browser.prod.js?r=1","vue":"/xwiki/webjars/wiki%3Axwiki/vue/3.5.26/dist/vue.runtime.esm-browser.prod.js?r=1","xwiki-livedata":"/xwiki/webjars/wiki%3Axwiki/xwiki-platform-livedata-webjar/18.1.0/main.es.js?r=1"}}</script>
+  <script src="/xwiki/bin/jsx/assets/extensions/hooks/onSave" defer="defer"></script>
+<link href="/xwiki/bin/ssx/assets/styles/color-filters" type="text/css" rel="stylesheet">
+<link href="/xwiki/bin/ssx/assets/styles/text-formatting" type="text/css" rel="stylesheet">
+<link href="/xwiki/bin/ssx/assets/macros/junction/" type="text/css" rel="stylesheet">
+<link href="/xwiki/bin/ssx/assets/macros/xcode" type="text/css" rel="stylesheet">
+<link href="/xwiki/bin/ssx/assets/styles/tables" type="text/css" rel="stylesheet">
+<link href="/xwiki/bin/ssx/assets/css/layout" type="text/css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Wiki Feed RSS" href="/xwiki/bin/view/Main/WebRss?xpage=rdf" />
+<link rel="alternate" type="application/rss+xml" title="Blog RSS Feed" href="/xwiki/bin/view/Blog/GlobalBlogRss?xpage=plain" />
+<!-- Google tag (gtag.js) -->
+<script async src=https://www.googletagmanager.com/gtag/js?id=G-CF7TX3R8LR></script>
+<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-CF7TX3R8LR'); </script>
+                    <link href="/xwiki/webjars/wiki%3Axwiki/xwiki-platform-search-webjar/18.1.0/searchSuggest.min.css?evaluate=true" type='text/css' rel='stylesheet'/>
+<link href="/xwiki/webjars/wiki%3Axwiki/font-awesome/7.1.0/css/all.min.css" rel='stylesheet'/>
+<link href="/xwiki/webjars/wiki%3Axwiki/font-awesome/7.1.0/css/v4-shims.min.css" rel='stylesheet'/>
+<link href="/xwiki/webjars/wiki%3Axwiki/webjar-blueimp-gallery/3.4.0/css/blueimp-gallery.min.css" type='text/css' rel='stylesheet'/>
+<link href="/xwiki/webjars/wiki%3Axwiki/xwiki-platform-image-lightbox-webjar/18.1.0/lightbox.css" type='text/css' rel='stylesheet'/>
+<link href="/xwiki/webjars/wiki%3Axwiki/xwiki-platform-tree-webjar/18.1.0/tree.min.css?evaluate=true" type='text/css' rel='stylesheet'/>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel='stylesheet'/>
+
+                
+                                                                                                                    
+
+
+
+<link href="/xwiki/bin/skin/skins/flamingo/cssVariablesInit.min.css?cache-version=1772011010000&#38;skin=XWiki.DefaultSkin&#38;colorTheme=xwiki%3AFlamingoThemes.Iceberg&#38;colorThemeVersion=10.1" rel="stylesheet" type="text/css" media="all" />
+<link href="/xwiki/bin/skin/skins/flamingo/style.min.css?cache-version=1772011010000&#38;skin=XWiki.DefaultSkin&#38;colorTheme=xwiki%3AFlamingoThemes.Iceberg&#38;colorThemeVersion=10.1" rel="stylesheet" type="text/css" media="all" />
+<link href="/xwiki/bin/skin/skins/flamingo/print.min.css?cache-version=1772011010000&#38;skin=XWiki.DefaultSkin&#38;colorTheme=xwiki%3AFlamingoThemes.Iceberg&#38;colorThemeVersion=10.1" rel="stylesheet" type="text/css" media="print" />
+            
+    <link rel='stylesheet' type='text/css' href='/xwiki/bin/skin/resources/css/xwiki.bundle.min.css?cache-version=1772011009000&#38;colorTheme=FlamingoThemes.Iceberg&#38;language=en'/>
+<link rel='stylesheet' type='text/css' href='/xwiki/bin/skin/resources/uicomponents/viewers/tags.min.css?cache-version=1772011009000&#38;colorTheme=FlamingoThemes.Iceberg'/>
+
+    <link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/AnnotationCode/Style?language=en&#38;docVersion=4.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/css/global?language=en&#38;docVersion=19.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/styles/page-titles?language=en&#38;docVersion=13.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/styles/panels/WebHome?language=en&#38;docVersion=44.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/XWiki/Mentions/MentionsMacro?language=en&#38;docVersion=8.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/css/formatting/headingicon?language=en&#38;docVersion=2.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/Image/Style/Code/DefaultImageStyleStyleSheet?language=en&#38;docVersion=3.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/styles/filter-generator?language=en&#38;docVersion=2.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/css/formatting/tables?language=en&#38;docVersion=6.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/TourCode/TourJS?language=en&#38;docVersion=6.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/macros/error?language=en&#38;docVersion=20.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/AnnotationCode/Settings?language=en&#38;docVersion=3.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/Refactoring/Code/RefactoringConfiguration?language=en&#38;docVersion=1.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/macros/boxes/WebHome?language=en&#38;docVersion=75.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/css/formatting/details-summary?language=en&#38;docVersion=2.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/Tour/HomepageTour/WebHome?language=en&#38;docVersion=2.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/macros/junction/WebHome?language=en&#38;docVersion=8.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/macros/resources?language=en&#38;docVersion=5.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/styles/Status-Selector?language=en&#38;docVersion=15.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/extensions/drawer/WebHome?language=en&#38;docVersion=21.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/XWiki/Realtime/Configuration?language=en&#38;docVersion=6.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/styles/extensions/sequential-navigation?language=en&#38;docVersion=12.1" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/XWiki/Like/LikeUIX?language=en&#38;docVersion=4.1&#38;theme=FlamingoThemes.Iceberg" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/assets/styles/panels/m-toc-panel?language=en&#38;docVersion=7.2" />
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/XWiki/FontAwesomeIcons?language=en&#38;docVersion=5.1" />
+
+
+    <script src="/xwiki/webjars/wiki%3Axwiki/requirejs/2.3.7/require.min.js?r=1" data-wysiwyg="true"></script>
+<script src="/xwiki/resources/uicomponents/tools/pageReady.min.js?cache-version=1772011009000" data-wysiwyg="true"></script>
+<script src="/xwiki/resources/js/xwiki/prototypeJSPatches.min.js?cache-version=1772011009000"></script>
+<script src="/xwiki/webjars/wiki%3Axwiki/prototype/1.7.3.0/prototype.js?r=1"></script>
+<script data-wysiwyg="true">
+// <![CDATA[
+        var jQuery = {};
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          require.config({"packages":[{"name":"scriptaculous","location":"\/xwiki\/webjars\/wiki%3Axwiki\/scriptaculous\/1.9.0","main":"scriptaculous"},{"name":"moment","location":"\/xwiki\/webjars\/wiki%3Axwiki\/moment\/2.30.1","main":"min\/moment.min"}],"paths":{"bootstrap":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-bootstrap\/18.1.0\/js\/xwiki-bootstrap.min.js?r=1","css":"\/xwiki\/resources\/uicomponents\/require\/css.min.js?cache-version=1772011009000","deferred":"\/xwiki\/resources\/uicomponents\/require\/deferred.min.js?cache-version=1772011009000","node-module":"\/xwiki\/resources\/uicomponents\/require\/node-module.min.js?cache-version=1772011009000","iscroll":"\/xwiki\/webjars\/wiki%3Axwiki\/iscroll\/5.2.0\/build\/iscroll-lite.js?r=1","jquery":"\/xwiki\/webjars\/wiki%3Axwiki\/jquery\/3.7.1\/jquery.min.js?r=1","jquery-migrate":"\/xwiki\/webjars\/wiki%3Axwiki\/jquery-migrate\/3.6.0\/dist\/jquery-migrate.min.js?r=1","jsTree":"\/xwiki\/webjars\/wiki%3Axwiki\/jstree\/3.3.16\/jstree.min.js?r=1","moment-jdateformatparser":"\/xwiki\/webjars\/wiki%3Axwiki\/moment-jdateformatparser\/1.2.1\/moment-jdateformatparser.min","moment-timezone":"\/xwiki\/webjars\/wiki%3Axwiki\/moment-timezone\/0.6.0\/builds\/moment-timezone-with-data.min","prototype":"\/xwiki\/webjars\/wiki%3Axwiki\/prototype\/1.7.3.0\/prototype.js?r=1","selectize":"\/xwiki\/webjars\/wiki%3Axwiki\/selectize.js\/0.13.3\/js\/standalone\/selectize.min.js?r=1","xwiki-attachments-icon":"\/xwiki\/bin\/skin\/resources\/uicomponents\/attachments\/icons.min.js?cache-version=1772011009000","xwiki-document-lock":"\/xwiki\/resources\/uicomponents\/lock\/lock.min.js?cache-version=1772011009000","xwiki-entityReference":"\/xwiki\/resources\/uicomponents\/model\/entityReference.min.js?cache-version=1772011009000","xwiki-events-bridge":"\/xwiki\/resources\/js\/xwiki\/eventsBridge.min.js?cache-version=1772011009000","xwiki-form-validation-async":"\/xwiki\/resources\/uicomponents\/tools\/formAsyncValidation.min.js?cache-version=1772011009000","xwiki-job-runner":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-job-webjar\/18.1.0\/jobRunner.min.js?r=1","xwiki-l10n":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-localization-webjar\/18.1.0\/l10n.min.js?r=1","xwiki-locale-picker":"\/xwiki\/bin\/skin\/skins\/flamingo\/localePicker.min.js?cache-version=1772011010000","xwiki-meta":"\/xwiki\/resources\/js\/xwiki\/meta.min.js?cache-version=1772011009000","xwiki-selectize":"\/xwiki\/resources\/uicomponents\/suggest\/xwiki.selectize.min.js?cache-version=1772011009000","xwiki-tree-finder":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-tree-webjar\/18.1.0\/finder.min.js?r=1","xwiki-tree":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-tree-webjar\/18.1.0\/tree.min.js?r=1","blueimp-gallery-bundle":"\/xwiki\/webjars\/wiki%3Axwiki\/webjar-blueimp-gallery\/3.4.0\/js\/blueimp-gallery-bundle.min","xwiki-lightbox":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-image-lightbox-webjar\/18.1.0\/lightbox.min.js?r=1","xwiki-ckeditor-inline":"\/xwiki\/bin\/jsx\/CKEditor\/InlineEditor?v=18.1.0&xwiki-version=18.1.0","xwiki-ckeditor":"\/xwiki\/bin\/jsx\/CKEditor\/EditSheet?v=18.1.0&xwiki-version=18.1.0&fast-diff-version=&bs3typeahead-version=4.0.2","fuse":"\/xwiki\/webjars\/wiki%3Axwiki\/fuse.js\/7.1.0\/dist\/fuse.basic.min.js?r=1","bootstrap3-typeahead":"\/xwiki\/webjars\/wiki%3Axwiki\/bootstrap-3-typeahead\/4.0.2\/bootstrap3-typeahead.min","fast-diff":"\/xwiki\/webjars\/wiki%3Axwiki\/fast-diff\/1.3.0\/diff","ckeditor":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-ckeditor-webjar\/18.1.0\/ckeditor","xwiki-ckeditor-plugins":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-ckeditor-plugins\/18.1.0\/webjar.bundle.min","chainpad":"\/xwiki\/webjars\/wiki%3Axwiki\/chainpad-webjar\/5.3.0\/chainpad.dist.min.js?r=1","chainpad-netflux":"\/xwiki\/webjars\/wiki%3Axwiki\/chainpad-netflux-webjar\/1.3.1\/chainpad-netflux.min.js?r=1","netflux-client":"\/xwiki\/webjars\/wiki%3Axwiki\/netflux-websocket\/1.3.0\/netflux-client.js?r=1","xwiki-realtime":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-realtime-webjar\/18.1.0\/webjar.bundle.min.js?r=1","json.sortify":"\/xwiki\/webjars\/wiki%3Axwiki\/json.sortify\/2.2.2\/dist\/JSON.sortify.js?r=1","nacl-fast":"\/xwiki\/webjars\/wiki%3Axwiki\/tweetnacl\/1.0.3\/nacl-fast.min.js?r=1","nacl-util":"\/xwiki\/webjars\/wiki%3Axwiki\/tweetnacl-util\/0.15.1\/nacl-util.min.js?r=1","bootstrap-switch":"\/xwiki\/webjars\/wiki%3Axwiki\/bootstrap-switch\/3.3.4\/js\/bootstrap-switch.min.js?r=1","xwiki-bootstrap-switch":"\/xwiki\/bin\/jsx\/XWiki\/Notifications\/Code\/BootstrapSwitch?minify=true","xwiki-realtime-wysiwyg-bundle":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-realtime-wysiwyg-webjar\/18.1.0\/webjar.bundle.min.js?r=1","hyper-json":"\/xwiki\/webjars\/wiki%3Axwiki\/hyper-json\/1.5.0\/hyperjson.js?r=1","diff-dom":"\/xwiki\/webjars\/wiki%3Axwiki\/diff-dom\/5.2.1\/browser\/diffDOM.js?r=1","xwiki-platform-notifications-webjar":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-notifications-webjar\/18.1.0\/main.es.js?r=1","paged-polyfill":"\/xwiki\/webjars\/wiki%3Axwiki\/pagedjs\/0.4.3\/dist\/paged.polyfill.js?r=1","xwiki-attachment-picker":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-attachment-picker-webjar\/18.1.0\/attachmentGalleryPicker.min","xwiki-attachment-picker-solr-search":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-attachment-picker-webjar\/18.1.0\/solrSearch.min","jquery-ui":"\/xwiki\/webjars\/wiki%3Axwiki\/jquery-ui\/1.14.1\/jquery-ui.min.js?r=1","jquery-ui-touch-punch":"\/xwiki\/webjars\/wiki%3Axwiki\/jquery-ui-touch-punch\/0.2.3\/jquery.ui.touch-punch.min.js?r=1","scriptaculous-accordion":"\/xwiki\/resources\/js\/xwiki\/accordion\/accordion.min.js?cache-version=1772011009000"},"shim":{"bootstrap":["jquery"],"prototype":{"exports":"$"},"scriptaculous\/dragdrop":["scriptaculous\/effects"],"selectize":["jquery"],"xwiki-document-lock":{"exports":"XWiki.DocumentLock"},"xwiki-entityReference":{"exports":"XWiki"},"ckeditor":{"exports":"CKEDITOR"},"xwiki-ckeditor-plugins":{"deps":["jquery","ckeditor"]},"diff-dom":{"exports":"diffDOM"},"jquery-ui-touch-punch":{"deps":["jquery-ui"]},"scriptaculous-accordion":{"deps":["scriptaculous\/effects"]}},"bundles":{"blueimp-gallery-bundle":["blueimp-gallery","blueimp-helper","blueimp-gallery-fullscreen","blueimp-gallery-indicator","blueimp-gallery-video","blueimp-gallery-vimeo","blueimp-gallery-youtube"],"xwiki-ckeditor-plugins":["resource","resourcePicker","entityResourcePicker","entityResourceSuggester","entityResourceDisplayer","modal","l10n","macroWizard","imageWizard"],"xwiki-realtime":["xwiki-realtime-config","xwiki-realtime-crypto","xwiki-realtime-document","xwiki-realtime-history","xwiki-realtime-interface","xwiki-realtime-loader","xwiki-realtime-messages","xwiki-realtime-saver","xwiki-realtime-toolbar","xwiki-realtime-transformers","xwiki-realtime-typingTests","xwiki-realtime-userData"],"xwiki-realtime-wysiwyg-bundle":["xwiki-realtime-wysiwyg","xwiki-realtime-wysiwyg-editHistory","xwiki-realtime-wysiwyg-editor","xwiki-realtime-wysiwyg-patches","xwiki-realtime-wysiwyg-selection"]},"config":{},"map":{"*":{"jquery":"jquery-migrate","moment\/moment":"moment"},"jQueryNoConflict":{"jquery":"jquery"},"jquery-migrate":{"jquery":"jQueryNoConflict"}}});
+define('jQueryNoConflict', ['jquery'], function($) {
+  return $.noConflict();
+});
+(function () {
+  const originalCreateNode = require.createNode;
+  require.createNode = function(config, moduleName, stringURL) {
+    const scriptElement = originalCreateNode.apply(this, arguments);
+    const url = new URL(stringURL, window.location.href);
+    if (url.pathname.endsWith('.es.js')) {
+      scriptElement.type = 'module';
+    }
+    return scriptElement;
+  };
+}());
+if (window.Prototype && Prototype.BrowserFeatures.ElementExtensions) {
+  require(['jquery', 'bootstrap'], function ($) {
+    // Fix incompatibilities between BootStrap and Prototype
+    var disablePrototypeJS = function (method, pluginsToDisable) {
+      var handler = function (event) {
+        event.target[method] = undefined;
+        setTimeout(function () {
+            delete event.target[method];
+        }, 0);
+      };
+      pluginsToDisable.each(function (plugin) { 
+          $(window).on(method + '.bs.' + plugin, handler); 
+      });
+    },
+    pluginsToDisable = ['collapse', 'dropdown', 'modal', 'tooltip', 'tab', 'popover'];
+    disablePrototypeJS('show', pluginsToDisable);
+    disablePrototypeJS('hide', pluginsToDisable);
+  });
+}
+window.XWiki = window.XWiki || {};
+XWiki.webapppath = "xwiki/";
+XWiki.servletpath = "bin/";
+XWiki.contextPath = "/xwiki";
+XWiki.mainWiki = "xwiki";
+// Deprecated: replaced by meta data in the HTML element
+XWiki.currentWiki = "xwiki";
+XWiki.currentSpace = "software-tools.ides.x.debugging.debug-toolbar";
+XWiki.currentPage = "WebHome";
+XWiki.editor = "";
+XWiki.viewer = "";
+XWiki.contextaction = "view";
+XWiki.skin = 'XWiki.DefaultSkin';
+XWiki.docisnew = false;
+XWiki.docsyntax = "xwiki/2.1";
+XWiki.docvariant = "";
+XWiki.hasEdit = false;
+XWiki.hasProgramming = false;
+XWiki.hasBackupPackImportRights = false;
+XWiki.hasRenderer = true;
+window.docviewurl = "/xwiki/bin/view/software-tools/ides/x/debugging/debug-toolbar/";
+window.docediturl = "/xwiki/bin/edit/software-tools/ides/x/debugging/debug-toolbar/WebHome";
+window.docsaveurl = "/xwiki/bin/save/software-tools/ides/x/debugging/debug-toolbar/WebHome";
+window.docgeturl = "/xwiki/bin/get/software-tools/ides/x/debugging/debug-toolbar/WebHome";
+// ]]>
+</script>
+                  <script src="/xwiki/webjars/wiki%3Axwiki/xwiki-platform-search-webjar/18.1.0/searchSuggest.min.js?r=1" defer="defer"></script>        <script type="application/json" id="trusted-domains-configuration">
+{
+  "trustedDomains": ["www.microchip.com"],
+  "allowedUrls": [],
+  "frontendUrlCheckPolicy": "COMMENTS"
+}
+</script>
+      
+    <script src='/xwiki/resources/uicomponents/model/entityReference.min.js?cache-version=1772011009000'></script>
+<script src='/xwiki/bin/skin/resources/js/xwiki/xwiki.bundle.min.js?cache-version=1772011009000&#38;defer=false&#38;language=en'></script>
+<script src='/xwiki/bin/skin/skins/flamingo/flamingo.min.js?cache-version=1772011010000&#38;language=en' defer='defer'></script>
+<script src='/xwiki/bin/skin/resources/uicomponents/async/async.min.js?cache-version=1772011009000&#38;wysiwyg=true' defer='defer'></script>
+<script src='/xwiki/resources/uicomponents/link/link-protection.min.js?cache-version=1772011009000' defer='defer'></script>
+<script src='/xwiki/bin/skin/resources/uicomponents/hierarchy/hierarchy.min.js?cache-version=1772011009000' defer='defer'></script>
+<script src='/xwiki/bin/skin/resources/uicomponents/widgets/tree.min.js?cache-version=1772011010000&#38;wysiwyg=true' defer='defer'></script>
+<script src='/xwiki/bin/skin/resources/uicomponents/viewers/tags.min.js?cache-version=1772011009000' defer='defer'></script>
+
+    <script src='/xwiki/bin/jsx/XWiki/Attachment/Validation/Code/MimetypeValidation?language=en&#38;docVersion=1.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/AnnotationCode/Settings?language=en&#38;docVersion=3.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/XWiki/Attachment/Validation/Code/FileSizeValidation?language=en&#38;docVersion=2.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/TourCode/TourJS?language=en&#38;docVersion=6.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/XWiki/Mentions/MentionsMacro?language=en&#38;docVersion=8.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/AnnotationCode/Script?language=en&#38;docVersion=6.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/XWiki/QuickSearchUIX?language=en&#38;docVersion=4.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/XWiki/Lightbox/WebHome?language=en&#38;docVersion=3.1' defer='defer'></script>
+<script src='/xwiki/bin/jsx/XWiki/Like/LikeUIX?language=en&#38;docVersion=4.1' defer='defer'></script>
+
+
+<script src="/xwiki/resources/js/xwiki/compatibility.min.js?cache-version=1772011009000" defer="defer"></script>
+<script src="/xwiki/resources/js/xwiki/markerScript.min.js?cache-version=1772011009000" defer="defer"></script>
+
+  </head>
+    <body id="body" class="skin-flamingo wiki-xwiki viewbody panel-left-width-Medium panel-right-width-Medium drawer drawer--right preference-underlining-only-inline-links
+   space-software-tools.ides.x.debugging.debug-toolbar       content">
+<div id="xwikimaincontainer">
+<div id="xwikimaincontainerinner">
+
+<div class="skip-nav">
+          <a class="btn btn-default" href="#xwikicontent">Skip to Content</a>
+</div>
+
+  <div id="menuview">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <header class="navbar navbar-default actionmenu"
+  aria-label="Wiki main menu ">
+    <div class="container-fluid">
+            <div class="navbar-header">
+                  <div id="companylogo">
+  <a href="/xwiki/bin/view/Main/" rel="home"     title="Home"     class="navbar-brand">    <span class="sr-only">Home</span>
+    <img src="/xwiki/bin/download/FlamingoThemes/Iceberg/logo.svg?rev=1.2"       alt="Logo of the wiki"/>  </a>
+</div>
+
+              </div>
+            <div id="xwikimainmenu">
+
+          <ul class='nav navbar-nav navbar-left'>
+                                             <div style="font-weight: bold; font-size: 28px; color: white; margin-top: 4px;">
+Developer Help
+</div>
+            </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+                                              
+                                                  <li>
+    <a
+      id="tmLogin"
+      href="/xwiki/bin/login/XWiki/XWikiLogin?xredirect=%2Fxwiki%2Fbin%2Fview%2Fsoftware-tools%2Fides%2Fx%2Fdebugging%2Fdebug-toolbar%2F&loginLink=1"
+      rel="nofollow"
+    >Log-in</a>
+  </li>
+
+                                         <li>
+<form class='navbar-form globalsearch globalsearch-close form-inline' id='globalsearch' action='/xwiki/bin/view/Main/Search'
+role='search'>
+<label class='hidden' for='headerglobalsearchinput'>Search</label>
+<button type='submit' class='btn' title="Search"
+aria-expanded='false' aria-controls='headerglobalsearchinput'><span class="fa fa-search" aria-hidden="true"></span></button>
+<input type='text' name='text' placeholder="search..." id='headerglobalsearchinput' disabled />
+</form>
+</li>
+                                           
+                                        
+              <li>
+    <button type="button" id="tmDrawerActivator" class="btn btn-link icon-navbar drawer-opener" aria-controls="tmDrawer"
+      aria-expanded="false" title="Drawer"
+      ><span class="sr-only">Toggle navigation</span
+      ><span class="fa fa-bars" aria-hidden="true"></span></button>
+    
+
+
+
+
+
+<dialog class="drawer-nav" id="tmDrawer"
+aria-label="Top drawer menu">
+  <ul class="drawer-menu">
+                <li class="drawer-brand clearfix">
+      <a href="/xwiki/bin/view/XWiki/XWikiGuest">
+                                        <img class='avatar avatar_120' src='/xwiki/bin/skin/resources/icons/xwiki/noavatar.png?cache-version=1772011009000' alt='XWikiGuest' title='XWikiGuest'/>      </a>
+      <div class="brand-links">
+                                                                            <span style="color: white; font-size: 80%;">Microchip Employees Only</span>
+                        </div>
+      <button class="btn btn-primary drawer-close" title="Close the drawer"><span class="fa fa-times" aria-hidden="true"></span></button>
+    </li>
+                                  <li class="drawer-category-header"><hr class="hidden"/>Developer Help</li>
+                                                             
+                                                    
+                                
+                                
+                                        <li class="drawer-category-header"><hr class="hidden"/>Global</li>
+                              
+                                                          
+
+
+
+
+
+  <li>
+    <a class="drawer-menu-item" href="/xwiki/bin/view/software-tools/ides/x/debugging/debug-toolbar/?xpage=whatsnew">
+      <span class="drawer-menu-item-icon">
+        <span class="fa fa-question-circle" aria-hidden="true"></span>
+      </span>
+      <span class="drawer-menu-item-text">What&#39;s New</span>
+    </a>
+  </li>
+                                          <li class="drawer-menuseparator"></li>
+            
+
+
+
+
+
+                                              
+      </ul>
+</dialog>
+
+
+
+  </li>
+      </ul>
+
+          </div>    </div>   </header>
+
+
+  </div>
+ <div id="headerglobal">
+  <div id="globallinks">
+  </div>   <div class="clearfloats"></div>
+      
+      <script id="lightbox-config" type="application/json">{"HTMLTemplate":"\u003C!-- The Gallery lightbox dialog. -->\n\u003Cdiv\nid=\"blueimp-gallery\"\nclass=\"blueimp-gallery blueimp-gallery-controls\"\naria-label=\"Image gallery\"\naria-modal=\"true\"\nrole=\"dialog\"\n>\n\u003Cdiv class=\"slides\" aria-live=\"polite\">\u003C\/div>\n\u003Ca\nclass=\"prev\" aria-controls=\"blueimp-gallery\"\naria-label=\"Previous image\"\ntitle=\"Previous image\"\naria-keyshortcuts=\"ArrowLeft\"\n>\u003C\/a>\n\u003Ca\nclass=\"next\" aria-controls=\"blueimp-gallery\"\naria-label=\"Next image\"\ntitle=\"Next image\"\naria-keyshortcuts=\"ArrowRight\"\n>\u003C\/a>\n\u003Cdiv class=\"controls btn-group\">\n\u003Ca\nclass=\"btn action fullscreen\" id=\"lightboxFullscreen\" aria-controls=\"blueimp-gallery\"\naria-label=\"Fullscreen\"\ntitle=\"Fullscreen\"\naria-keyshortcuts=\"F11\"\n>\u003Cspan class=\"fa fa-arrows-alt\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003Ca\nclass=\"btn action download\" id=\"lightboxDownload\" aria-controls=\"blueimp-gallery\" target=\"_blank\"\naria-label=\"Download\"\ntitle=\"Download\"\n>\u003Cspan class=\"fa fa-download\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003Cspan class=\"btn\" title=\"Copy image ID\">\n\u003Ca class=\"action copyImageId\" aria-controls=\"blueimp-gallery\" aria-label=\"Copy image ID\" data-original-title=\"Copied to clipboard\" data-toggle=\"tooltip\"\ndata-placement=\"bottom\" data-trigger=\"manual\"\n>\u003Cspan class=\"fa fa-anchor\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003C\/span>\n\u003Ca\nclass=\"btn action autoPlay\" aria-controls=\"blueimp-gallery\"\naria-label=\"Slideshow\"\ntitle=\"Slideshow\"\naria-keyshortcuts=\"Space\" aria-pressed=\"false\"\n>\u003Cspan class=\"fa fa-play\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003Ca\nclass=\"btn action escape\" aria-controls=\"blueimp-gallery\"\naria-label=\"Escape\"\ntitle=\"Escape\"\naria-keyshortcuts=\"Escape\"\n>\u003Cspan class=\"fa fa-times\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003C\/div>\n\u003Cdiv class=\"lightboxDescription\">\n\u003Cdiv class=\"caption\"\naria-label=\"Caption\">\u003C\/div>\n\u003Cdiv class=\"descriptionMetadata\">\n\u003Cspan class=\"title\"\naria-label=\"File name\">\u003C\/span>\n\u003Cdiv class=\"descriptionRow\">\n\u003Cspan class=\"publisher\"\naria-label=\"Image publisher\">\u003C\/span>\n\u003Cspan class=\"date\" data-date-format=\"yyyy\/MM\/dd HH:mm\" \ndata-user-time-zone=\"America\/Phoenix\"\naria-label=\"Date\">\u003C\/span>\n\u003C\/div>\n\u003C\/div>\n\u003C\/div>\n\u003Col class=\"indicator\">\u003C\/ol>\n\u003C\/div>\n\u003C!-- The image toolbar popover template. -->\n\u003Cdiv id=\"imageToolbarTemplate\">\n\u003Cdiv class=\"btn-group imageToolbar\" hidden>\n\u003Ca class=\"openLightbox\" href=\"\"\ntitle=\"Image gallery\"\n>\u003Cspan class=\"fa fa-arrows-alt\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003Ca class=\"imageDownload\" target=\"_blank\"\ntitle=\"Download\"\n>\u003Cspan class=\"fa fa-download\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003Ca class=\"permalink hidden\"\ntitle=\"Permalink\"\n>\u003Cspan class=\"fa fa-link\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003Cspan class=\"hidden\" title=\"Copy image ID\">\n\u003Ca class=\"copyImageId\" href=\"\" data-original-title=\"Copied to clipboard\"\ndata-toggle=\"tooltip\" data-placement=\"bottom\" data-trigger=\"manual\"\n>\u003Cspan class=\"fa fa-anchor\" aria-hidden=\"true\">\u003C\/span>\u003C\/a>\n\u003C\/span>\n\u003C\/div>\n\u003C\/div>\n\u003Cdiv id='imagePopoverContainer'>\u003C\/div>\n","togglerTemplate":"\u003Cbutton class='lightbox-toggle btn btn-xs sr-only'\naria-label=\"Open the image actions\">\n\u003Cspan class=\"fa fa-ellipsis-v\" aria-hidden=\"true\">\u003C\/span>\n\u003C\/button>\n"}
+</script>
+      <script type='application/json' id='attachment-validation-filesize-configuration'>{"maxFileSize":107374182400}</script>
+              <script id="realtime-config" type="application/json">{"webSocketURL":"wss:\/\/developerhelp.microchip.com\/xwiki\/websocket\/xwiki\/netflux","user":{"name":"XWikiGuest","avatarURL":"\/xwiki\/bin\/skin\/resources\/icons\/xwiki\/noavatar.png?cache-version=1772011009000"},"document":{"language":"en","modified":1719235854000},"dateFormat":"yyyy\/MM\/dd HH:mm"}</script>
+
+                                                                                                                                                                                                                                                                      <template id="realtime-edit-toolbar">
+<div class="realtime-edit-toolbar" data-user-id="">
+<div class="realtime-edit-toolbar-left">
+<input type="hidden" name="preventEmptyRevision" value="true" />
+<div class="btn-group dropup">
+<button
+type="button"
+class="btn btn-primary realtime-action-done"
+title="Save and return to view mode"
+>
+<span class="fa fa-check" aria-hidden="true"></span>
+Done
+</button>
+<button
+type="button"
+class="btn btn-primary dropdown-toggle"
+data-toggle="dropdown"
+aria-haspopup="true"
+aria-expanded="false"
+>
+<span class="caret"></span>
+<span class="sr-only">Toggle dropdown</span>
+</button>
+<ul class="dropdown-menu">
+<li>
+<a
+href="#"
+class="realtime-action-summarize"
+title="Summarize your changes and return to view mode"
+data-continue="false"
+data-toggle="modal"
+data-target="#realtime-changeSummaryModal"
+>Summarize &#38; Done</a>
+</li>
+<li>
+<a
+href="#"
+class="realtime-action-leave"
+title="Leave the realtime collaboration and continue editing alone"
+data-toggle="modal"
+data-target="#realtime-leave-modal"
+>Leave Collaboration</a>
+</li>
+</ul>
+</div>
+<realtime-status
+class="realtime-connection-status"
+data-status-dirty="Disconnected"
+data-status-cleaning="Connecting"
+></realtime-status>
+<ul
+class="realtime-users"
+data-limit="4"
+>
+<li><!-- User --></li>
+</ul>
+<div class="btn-group dropup realtime-users-dropdown">
+<button
+type="button"
+class="btn dropdown-toggle realtime-action-users badge"
+title="See who&#39;s editing"
+data-toggle="dropdown"
+aria-haspopup="true"
+aria-expanded="false"
+data-more=""
+>
+<span class="sr-only">Users</span>
+</button>
+<ul class="dropdown-menu">
+<li><!-- User --></li>
+</ul>
+</div>
+</div>
+<div class="realtime-edit-toolbar-right">
+<realtime-status
+class="realtime-save-status"
+data-status-dirty="Unsaved"
+data-status-cleaning="Saving"
+data-status-clean="Saved"
+></realtime-status>
+<div class="btn-group dropup">
+<button
+type="button"
+class="btn btn-default dropdown-toggle realtime-action-history"
+title="Recent versions"
+data-toggle="dropdown"
+aria-haspopup="true"
+aria-expanded="false"
+>
+<span class="fa fa-clock-o" aria-hidden="true"></span>
+<span class="sr-only">History</span>
+</button>
+<ul
+class="dropdown-menu dropdown-menu-right realtime-versions"
+data-limit="5"
+>
+<li class="dropdown-header">
+Recent versions
+</li>
+<li role="separator" class="divider"></li>
+<li>
+<a
+href="#"
+class="realtime-action-summarize"
+title="Summarize your changes and continue editing"
+data-continue="true"
+data-toggle="modal"
+data-target="#realtime-changeSummaryModal"
+>Summarize Changes</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</template>
+
+<template id="realtime-user">
+<a
+href="#"
+class="realtime-user"
+data-id=""
+data-reference=""
+>
+<span class="realtime-user-avatar-wrapper" data-abbr="">
+<img
+class="realtime-user-avatar"
+src="/xwiki/bin/skin/resources/icons/xwiki/noavatar.png?cache-version=1772011009000"
+alt="Username"
+title=""
+/>
+</span>
+<span class="realtime-user-name" data-count=""></span>
+</a>
+</template>
+
+<template id="realtime-spinner">
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/XWiki/Realtime/Configuration?language=en&#38;docVersion=6.1" />
+</template>
+
+<template id="realtime-status">
+<link rel="stylesheet" type="text/css" href="/xwiki/bin/ssx/XWiki/Realtime/Configuration?language=en&#38;docVersion=6.1" />
+<realtime-spinner></realtime-spinner>
+</template>
+
+<template id="realtime-version">
+<a
+href=""
+class="realtime-version"
+data-toggle="modal"
+data-target="#realtime-version-modal"
+data-remote="false"
+>
+<span class="realtime-version-icon">
+<span class="fa fa-clock-o" aria-hidden="true"></span>
+</span>
+<span class="realtime-version-info">
+<span class="realtime-version-number"></span>
+<span class="realtime-version-date"></span>
+</span>
+</a>
+</template>
+
+<template id="realtime-changeSummaryModal-template">
+<div id="realtime-changeSummaryModal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"
+aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="modal-title">
+Summarize Changes
+</div>
+</div>
+<div class="modal-body xform">
+<ul class="nav nav-tabs" role="tablist">
+<li role="presentation" class="active">
+<a
+href="#realtime-changeSummaryModal-summaryTab"
+aria-controls="realtime-changeSummaryModal-summaryTab"
+role="tab"
+data-toggle="tab"
+>
+Summary
+</a>
+</li>
+<li role="presentation">
+<a
+href="#realtime-changeSummaryModal-changesTab"
+aria-controls="realtime-changeSummaryModal-changesTab"
+role="tab"
+data-toggle="tab"
+>
+Changes
+</a>
+</li>
+</ul>
+<div class="tab-content">
+<div
+role="tabpanel"
+class="tab-pane active"
+id="realtime-changeSummaryModal-summaryTab"
+>
+<dl>
+<dt>
+<label for="realtime-changeSummaryModal-summary" hidden>
+Summary
+</label>
+<span class="xHint">
+Enter a brief description of your changes
+(Required)
+</span>
+</dt>
+<dd>
+<textarea
+id="realtime-changeSummaryModal-summary"
+name="summary"
+maxlength="1023"
+rows="10"
+title="Summary"
+></textarea>
+</dd>
+<dt id="realtime-changeSummaryModal-minorChange" data-continue="false">
+<label>
+<input type="checkbox" name="minorChange" />
+Minor change
+</label>
+<span class="xHint">
+Minor changes are by default collapsed in the page history.
+</span>
+</dt>
+<dd></dd>
+</dl>
+</div>
+<div
+role="tabpanel"
+class="tab-pane"
+id="realtime-changeSummaryModal-changesTab"
+>
+<realtime-spinner></realtime-spinner>
+<div class="diff-group"></div>
+<div class="box infomessage noChange">
+No changes
+</div>
+<div class="box infomessage isNew">
+The page does not exist yet.
+</div>
+<div class="box errormessage">
+Failed to load changes
+</div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary">
+<span data-continue="true">Save</span>
+<span data-continue="false">Done</span>
+</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">
+Cancel
+</button>
+</div>
+</div>
+</div>
+</div>
+</template>
+
+<template id="realtime-version-modal-template">
+<div id="realtime-version-modal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"
+aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="modal-title">
+Version <span class="realtime-version-number"></span> by <span class="realtime-version-author"></span> on <span class="realtime-version-date"></span>
+</div>
+</div>
+<div class="modal-body">
+<realtime-document-viewer
+reference="xwiki:software-tools.ides.x.debugging.debug-toolbar.WebHome"
+locale="en"
+version=""
+alt="Failed to load version."
+></realtime-document-viewer>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">
+Close
+</button>
+</div>
+</div>
+</div>
+</div>
+</template>
+
+<template id="realtime-leave-modal-template">
+<div id="realtime-leave-modal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"
+aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="modal-title">
+Leave Collaboration
+</div>
+</div>
+<div class="modal-body">
+Are you sure you want to leave the realtime collaboration and continue editing alone? The changes you save while editing alone will lead to merge conflicts with the changes auto-saved by the realtime editing session.
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" data-dismiss="modal">
+Leave
+</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">
+Cancel
+</button>
+</div>
+</div>
+</div>
+</div>
+</template>
+
+<template id="realtime-warning">
+<button
+type="button"
+class="btn btn-link realtime-warning realtime-warning-connected"
+data-toggle="popover"
+data-placement="top"
+title="Concurrent editing warning"
+data-content="Someone is editing this page outside the realtime collaboration session. Their changes could cause merge conflicts on save."
+>
+<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+</button>
+<button
+type="button"
+class="btn btn-link realtime-warning realtime-warning-disconnected"
+data-toggle="popover"
+data-placement="top"
+title="Concurrent editing warning"
+data-content="You&#39;re editing outside the realtime collaboration session. Your changes can cause merge conflicts on save."
+>
+<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+</button>
+</template>
+      
+      
+      
+      <div class="hidden">
+<input id="defaultImageStylesRestURL" name="defaultImageStylesRestURL" type="hidden" value="/rest/wikis/xwiki/imageStyles/default" />
+<input id="imageStylesRestURL" name="imageStylesRestURL" type="hidden" value="/rest/wikis/xwiki/imageStyles" />
+</div>
+      <script id="attachment-move-config" type="application/json">{"treeWebjar":"\/xwiki\/webjars\/wiki%3Axwiki\/xwiki-platform-tree-webjar\/18.1.0\/require-config.min.js?evaluate=true"}</script>
+      <script type='application/json' id='attachment-validation-mimetypes-configuration'>{"allowedMimetypes":["*"],"blockerMimetypes":[]}</script>
+      
+      
+      
+  </div> 
+
+
+<div class="content" id="contentcontainer">
+  <div id="contentcolumn"> 
+
+        
+  <div class="main">
+  
+   <nav id="hierarchy_breadcrumb" aria-label="Breadcrumb">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <ol id="hierarchy" class="breadcrumb breadcrumb-expandable" data-entity='software-tools.ides.x.debugging.debug-toolbar.WebHome' data-id='hierarchy' data-limit='5' data-treenavigation='true' data-entities='&#123;Space xwiki:software-tools.ides.x.debugging.debug-toolbar=software-tools.ides.x.debugging.debug-toolbar.WebHome}'><li
+                  
+                                
+        
+        
+                                          class="wiki dropdown"><a href="/xwiki/bin/view/Main/"
+              title="Home"
+            ><span class="fa fa-home" aria-hidden="true"></span></a><button class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='sr-only'>Toggle the parent tree of MPLAB® X IDE Debug Toolbar. </span><span class="fa fa-caret-down" aria-hidden="true"></span></button><div class='dropdown-menu'>                                                                                                                                                                                            <div                                                                                                                         class = "breadcrumb-tree"              data-responsive = "true"              data-url = "/xwiki/bin/get/software-tools/ides/x/debugging/debug-toolbar/WebHome?outputSyntax=plain&#38;sheet=XWiki.DocumentTree&#38;showTranslations=false&#38;limit=10"              data-root = "&#123;}"              data-dragAndDrop = "false"              data-contextMenu = "false"              data-icons = "true"              data-edges = "true"              data-checkboxes = "false"              data-openTo = "document:xwiki:software-tools.ides.x.debugging.debug-toolbar.WebHome"              data-finder = "false"  ></div>
+</div></li><li                  
+                      
+                        
+        
+                                    class="space dropdown"><a href="/xwiki/bin/view/software-tools/"
+            >Learn Software and Hardware Tools at Microchip</a><button class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='sr-only'>Toggle the hierarchy tree under Learn Software and Hardware Tools at Microchip. </span><span class="fa fa-caret-down" aria-hidden="true"></span></button><div class='dropdown-menu'>                                                                                                                                                                                                          <div                                                                                                                               class = "breadcrumb-tree"              data-responsive = "true"              data-url = "/xwiki/bin/get/software-tools/ides/x/debugging/debug-toolbar/WebHome?outputSyntax=plain&#38;sheet=XWiki.DocumentTree&#38;showTranslations=false&#38;limit=10&#38;root=wiki%3Axwiki"              data-root = "&#123;&#34;type&#34;:&#34;wiki&#34;,&#34;id&#34;:&#34;xwiki&#34;}"              data-dragAndDrop = "false"              data-contextMenu = "false"              data-icons = "true"              data-edges = "true"              data-checkboxes = "false"              data-openTo = "document:xwiki:software-tools.WebHome"              data-finder = "false"  ></div>
+</div></li><li                                    class="ellipsis">&hellip;</li><li                  
+                      
+                                                    
+        
+                                    class="space dropdown"><a href="/xwiki/bin/view/software-tools/ides/x/"
+            >Learn MPLAB® X IDE</a><button class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='sr-only'>Toggle the hierarchy tree under Learn MPLAB® X IDE. </span><span class="fa fa-caret-down" aria-hidden="true"></span></button><div class='dropdown-menu'>                                                                                                                                                                                                          <div                                                                                                                               class = "breadcrumb-tree"              data-responsive = "true"              data-url = "/xwiki/bin/get/software-tools/ides/x/debugging/debug-toolbar/WebHome?outputSyntax=plain&#38;sheet=XWiki.DocumentTree&#38;showTranslations=false&#38;limit=10&#38;root=document%3Axwiki%3Asoftware-tools.ides.WebHome"              data-root = "&#123;&#34;type&#34;:&#34;document&#34;,&#34;id&#34;:&#34;xwiki:software-tools.ides.WebHome&#34;}"              data-dragAndDrop = "false"              data-contextMenu = "false"              data-icons = "true"              data-edges = "true"              data-checkboxes = "false"              data-openTo = "document:xwiki:software-tools.ides.x.WebHome"              data-finder = "false"  ></div>
+</div></li><li                  
+                      
+                                      
+        
+                                    class="space dropdown"><a href="/xwiki/bin/view/software-tools/ides/x/debugging/"
+            >Debugging Your Application in MPLAB® X IDE</a><button class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='sr-only'>Toggle the hierarchy tree under Debugging Your Application in MPLAB® X IDE. </span><span class="fa fa-caret-down" aria-hidden="true"></span></button><div class='dropdown-menu'>                                                                                                                                                                                                          <div                                                                                                                               class = "breadcrumb-tree"              data-responsive = "true"              data-url = "/xwiki/bin/get/software-tools/ides/x/debugging/debug-toolbar/WebHome?outputSyntax=plain&#38;sheet=XWiki.DocumentTree&#38;showTranslations=false&#38;limit=10&#38;root=document%3Axwiki%3Asoftware-tools.ides.x.WebHome"              data-root = "&#123;&#34;type&#34;:&#34;document&#34;,&#34;id&#34;:&#34;xwiki:software-tools.ides.x.WebHome&#34;}"              data-dragAndDrop = "false"              data-contextMenu = "false"              data-icons = "true"              data-edges = "true"              data-checkboxes = "false"              data-openTo = "document:xwiki:software-tools.ides.x.debugging.WebHome"              data-finder = "false"  ></div>
+</div></li><li                  
+                      
+                                      
+        
+                                                          class="active space dropdown"><a href="/xwiki/bin/view/software-tools/ides/x/debugging/debug-toolbar/"
+            >MPLAB® X IDE Debug Toolbar</a><button class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='sr-only'>Toggle the hierarchy tree under MPLAB® X IDE Debug Toolbar. </span><span class="fa fa-caret-down" aria-hidden="true"></span></button><div class='dropdown-menu'>                                                                                                                                                                                                          <div                                                                                                                               class = "breadcrumb-tree"              data-responsive = "true"              data-url = "/xwiki/bin/get/software-tools/ides/x/debugging/debug-toolbar/WebHome?outputSyntax=plain&#38;sheet=XWiki.DocumentTree&#38;showTranslations=false&#38;limit=10&#38;root=document%3Axwiki%3Asoftware-tools.ides.x.debugging.WebHome"              data-root = "&#123;&#34;type&#34;:&#34;document&#34;,&#34;id&#34;:&#34;xwiki:software-tools.ides.x.debugging.WebHome&#34;}"              data-dragAndDrop = "false"              data-contextMenu = "false"              data-icons = "true"              data-edges = "true"              data-checkboxes = "false"              data-openTo = "document:xwiki:software-tools.ides.x.debugging.debug-toolbar.WebHome"              data-finder = "false"  ></div>
+</div>      </li></ol>
+      </nav>
+
+      
+
+
+    
+
+
+
+
+
+
+
+<main id="mainContentArea" class="xcontent">
+  <div class="row document-header">
+  <section class="document-info col-xs-12 col-md-7"
+    aria-label="Page header">
+                      
+          
+        <div id="document-title"><h1>MPLAB® X IDE Debug Toolbar</h1></div>
+                            <div class="xdocLastModification">
+                  Last modified by Microchip on 2024/06/24 06:30
+              </div>
+      </section>
+  </div>
+<hr/>
+      
+      
+      
+            
+        <div class="row">
+    <div id="xwikicontent" class="col-xs-12">
+              <p>​<img src="/xwiki/bin/download/software-tools/ides/x/debugging/debug-toolbar/WebHome/debug_toolbar.png?width=400&amp;height=47&amp;rev=1.1" alt="Debug toolbar" data-xwiki-image-style-alignment="center" height="47" width="400" id="Idebug_toolbar.png" class="wikigeneratedid"/></p><p>The debug toolbar will not be visible when you first launch MPLAB<sup>®</sup> X IDE. It will appear automatically when you <span class="wikilink"><a href="/xwiki/bin/view/software-tools/ides/x/debugging/starting/">start a debug session</a></span>.</p><div class="box infomessage"><span class="icon-block"><span class="fa fa-info-circle" aria-hidden="true"></span></span><span class="sr-only">Information</span><div><p>Keyboard shortcuts may be added or modified.</p></div></div><div class="wikimodel-emptyline"></div><p><img src="/xwiki/bin/download/software-tools/ides/x/debugging/debug-toolbar/WebHome/Debug_Finish_Debugger_Session.png?rev=1.1" alt="finish debugger session button" id="IDebug_Finish_Debugger_Session.png" class="wikigeneratedid"/>&nbsp;Finish Debugger Session</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Finish Debugger Session</strong></p><p>Keyboard:<br/><strong>Shift+F5</strong></p></div></td><td><div><p>Ends the current debug session and closes the connection to the debug tool.</p><p>If you are running multiple debug sessions simultaneously, to end a specific session:</p><ul><li>Open the <strong>Sessions&nbsp;</strong>window by choosing <strong>Window &gt; Debugging &gt; Sessions</strong> Alt+Shift+6</li><li>Right-click the debugging session you want to stop and choose <strong>Finish</strong> from the pop-up menu.</li></ul></div></td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/pause.png?rev=1.1" alt="pause button" id="Igraphics:mplabx.ide.toolbar.debug40pause.png" class="wikigeneratedid"/>&nbsp;Pause</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Pause</strong></p><p>Keyboard:<br/><strong>Ctrl+Alt+8</strong></p></div></td><td>Pauses the debugging operation without finishing the session. Debug windows such as memory views and watches will be updated to reflect the current state of the device.</td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/reset.gif?rev=1.1" alt="reset button" id="Igraphics:mplabx.ide.toolbar.debug40reset.gif" class="wikigeneratedid"/>&nbsp;Reset</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Reset</strong></p><p>Keyboard:<br/><strong>None</strong></p></div></td><td><div><p>Performs processor reset. Additional resets, such as POR/BOR, MCLR, and System, may be available, depending on the device.</p></div></td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/continue.png?rev=1.1" alt="continue button" id="Igraphics:mplabx.ide.toolbar.debug40continue.png" class="wikigeneratedid"/>&nbsp;Continue&nbsp;</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Continue</strong></p><p>Keyboard:<br/><strong>F5</strong></p></div></td><td><div><p>Resumes debugging until the next breakpoint or the end of the program is reached.</p></div></td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/step-over.png?rev=1.1" alt="step over button" id="Igraphics:mplabx.ide.toolbar.debug40step-over.png" class="wikigeneratedid"/>&nbsp;Step Over&nbsp;</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Step Over</strong></p><p>Keyboard:<br/><strong>F8</strong></p></div></td><td><div><p>Executes one source line of the program. If the line is a function call, executes the entire function then stops.</p></div></td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/step-into.png?rev=1.1" alt="step into button" id="Igraphics:mplabx.ide.toolbar.debug40step-into.png" class="wikigeneratedid"/>&nbsp;Step Into</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Step Into</strong></p><p>Keyboard:<br/><strong>F7</strong></p></div></td><td>Executes one source line of the program. If the line is a function call, executes the program up to the function's first statement and stops.</td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/step-out.png?width=24&amp;height=24&amp;rev=1.1" alt="step out button" height="24" width="24" id="Igraphics:mplabx.ide.toolbar.debug40step-out.png" class="wikigeneratedid"/>&nbsp;Step Out&nbsp;</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Step Out</strong></p><p>Keyboard:<br/><strong>Ctrl+F7</strong></p></div></td><td>Executes one source line of a program. If the line is a function call, it executes the functions and returns control to the caller.</td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/run-to-cursor.png?rev=1.1" alt="run to cursor button" id="Igraphics:mplabx.ide.toolbar.debug40run-to-cursor.png" class="wikigeneratedid"/>&nbsp;Run to Cursor&nbsp;</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Run to Cursor</strong></p><p>Keyboard:<br/><strong>F4</strong></p></div></td><td><div><p>Runs the current project to the cursor's location in the file and stops program execution.</p></div></td></tr></table><p><img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/set-pc-at-cursor.gif?rev=1.1" alt="set pc at cursor button" id="Igraphics:mplabx.ide.toolbar.debug40set-pc-at-cursor.gif" class="wikigeneratedid"/>&nbsp;Set PC at Cursor&nbsp;</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Set PC at Cursor</strong></p><p>Keyboard:<br/><strong>None</strong></p></div></td><td><div><p>Sets the program counter (PC) value to the line address of the cursor.</p></div></td></tr></table><p>&nbsp;<img src="/xwiki/wiki/graphics/download/mplabx/ide/toolbar/debug/focus-cursor-at-pc.gif?rev=1.1" alt="focus cursor at pc button" id="Igraphics:mplabx.ide.toolbar.debug40focus-cursor-at-pc.gif" class="wikigeneratedid"/>&nbsp;Focus Cursor at PC&nbsp;</p><table><tr><td style="width:183px"><div><p>Menu:<br/><strong>Debug &gt; Focus Cursor at PC</strong></p><p>Keyboard:<br/><strong>None</strong></p></div></td><td>Moves the cursor to the current PC address and centers this address in the window.</td></tr></table><p class="hidden-print"><span class="wikilink"><a href="#top">Back to Top</a></span></p>
+          </div>
+  </div>
+  </main>
+
+
+
+
+
+    <div class="clearfloats"></div>
+                        <aside id="xdocFooter" aria-label="Content footer">
+                          
+                  <div class="like-container">
+<input id="is-liked" type="hidden" value="false" />
+<button class="like-button btn btn-default" disabled="disabled" title="You cannot interact with likes on this page.">
+<span aria-hidden="true" class="fa fa-heart-o"></span>
+</button>
+<span class="like-number" data-like-count="0">
+<a href="/xwiki/bin/view/software-tools/ides/x/debugging/debug-toolbar/?viewer=likers" title="Number of likes on this page: 0. Click to see who liked this page.">
+0 Likes
+</a>
+</span>
+</div>
+                  
+         <div class="doc-tags" id="xdocTags">
+                    Tags:
+                    <span class="tag-wrapper">
+  <span class="tag"><a href="/xwiki/bin/view/Main/Tags?do=viewTag&amp;tag=_%24prv_">_$prv_</a></span>
+  </span>
+        </div>
+    
+              </aside>
+      <aside id="disclaimer" aria-label="disclaimer">
+                  <div style="font-size: 85%; color: #8f8f8f; padding: 1em 0;">
+Information contained on this site regarding device applications and the like is provided only for your convenience and may be superseded by updates. It is your responsibility to ensure that your application meets with your specifications. MICROCHIP MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND WHETHER EXPRESS OR IMPLIED, WRITTEN OR ORAL, STATUTORY OR OTHERWISE, RELATED TO THE INFORMATION, INCLUDING BUT NOT LIMITED TO ITS CONDITION, QUALITY, PERFORMANCE, MERCHANTABILITY OR FITNESS FOR PURPOSE. Microchip disclaims all liability arising from this information and its use. Use of Microchip devices in life support and/or safety applications is entirely at the buyer's risk, and the buyer agrees to defend, indemnify and hold harmless Microchip from any and all damages, claims, suits, or expenses resulting from such use. No licenses are conveyed, implicitly or otherwise, under any Microchip intellectual property rights.
+</div>
+              </aside>
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aside id="xwikidata" aria-label="Additional information about this page">
+</aside>  
+        </div>  </div>  <button id="leftPanelsToggle" class="btn btn-default" title="Toggle the left panel column.">
+    <span class="fa fa-caret-right" aria-hidden="true"></span>
+    <span class="sr-only">Toggle the left panel column.</span>
+  </button>
+<div id="leftPanels" class="panels left panel-width-Medium">
+      <div role="complementary" class="panel
+expanded PanelsMMenu MMenu" aria-label="Menu"><h2 class="xwikipaneltitle">Menu</h2><div class="xwikipanelcontents"><div class="xtree" data-responsive="true" data-url="/xwiki/bin/get/api/Menu/home?outputSyntax=plain" data-dragAndDrop="false" data-contextMenu="false" data-icons="false" data-edges="false" data-checkboxes="false" data-openTo="software-tools.ides.x.debugging.debug-toolbar.WebHome" data-finder="false"></div><div class="xtree" data-responsive="true" data-url="/xwiki/bin/get/api/Menu/applications?outputSyntax=plain" data-dragAndDrop="false" data-contextMenu="false" data-icons="false" data-edges="false" data-checkboxes="false" data-openTo="software-tools.ides.x.debugging.debug-toolbar.WebHome" data-finder="false"></div><div class="xtree" data-responsive="true" data-url="/xwiki/bin/get/api/Menu/products?outputSyntax=plain" data-dragAndDrop="false" data-contextMenu="false" data-icons="false" data-edges="false" data-checkboxes="false" data-openTo="software-tools.ides.x.debugging.debug-toolbar.WebHome" data-finder="false"></div><div class="xtree" data-responsive="true" data-url="/xwiki/bin/get/api/Menu/tools?outputSyntax=plain" data-dragAndDrop="false" data-contextMenu="false" data-icons="false" data-edges="false" data-checkboxes="false" data-openTo="software-tools.ides.x.debugging.debug-toolbar.WebHome" data-finder="false"></div><div class="xtree" data-responsive="true" data-url="/xwiki/bin/get/api/Menu/info?outputSyntax=plain" data-dragAndDrop="false" data-contextMenu="false" data-icons="false" data-edges="false" data-checkboxes="false" data-openTo="software-tools.ides.x.debugging.debug-toolbar.WebHome" data-finder="false"></div></div></div>
+  <div role="button" tabindex="0" class="ui-resizable-handle ui-resizable-e"
+  title="Drag this handle to resize the left panel column."></div> 
+</div>
+
+
+  <button id="rightPanelsToggle" class="btn btn-default" title="Toggle the right panel column.">
+    <span class="fa fa-caret-right" aria-hidden="true"></span>
+    <span class="sr-only">Toggle the right panel column.</span>
+  </button>
+<div id="rightPanels" class="panels right panel-width-Medium">
+      
+        <!--<a style="width: 100%; max-width: 350px; display: block; margin: 0 auto;" href="https://events.microchip.com/event/MASTERs2025/summary"><img src="/xwiki/wiki/graphics/download/banners/WebHome/masters25.png"></a>-->
+        
+        <div role="complementary" class="panel
+expanded PanelsMicrochipSupport MicrochipSupport" aria-label="Microchip Support"><h2 class="xwikipaneltitle">Microchip Support</h2><div class="xwikipanelcontents"><p>Query Microchip Forums and get your questions answered by our community:</p><p><span class="fa fa-comments  " title="">&nbsp;</span>&nbsp;<span class="wikiexternallink"><a href="https://forum.microchip.com/">Microchip Forums</a></span><br/><span class="fa fa-comments-o  " title="">&nbsp;</span> <span class="wikiexternallink"><a href="https://www.avrfreaks.net/">AVR Freaks Forums</a></span></p><p>If you need to work with Microchip Support staff directly, you can submit a technical support case. Keep in mind that many questions can be answered through our self-help resources, so this may not be your speediest option.</p><p><span class="fa fa-question-circle-o  " title="">&nbsp;</span>&nbsp;<span class="wikiexternallink"><a href="https://microchip.my.site.com/s/">Technical Support Portal</a></span></p></div></div>
+  <div role="button" tabindex="0" class="ui-resizable-handle ui-resizable-w"
+  title="Drag this handle to resize the right panel column."></div>
+</div>
+
+</div><footer id="footerglobal">
+  <div id="xwikilicence">© 2026 Microchip Technology, Inc.</div>
+              <div id="xwikiplatformversion">XWiki Debian 18.1.0</div>
+  </footer>
+
+</div></div></body>
+</html>
