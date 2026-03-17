@@ -44,10 +44,13 @@
 #define PRG3 3
 #define FLASH 4
 
+#define FLASH_HALF_PERIOD 50    // 50 cicli × 10ms = 500ms
+
 
 uint8_t sw1_last = 1;
 uint8_t sw1_counter = 0;
 uint8_t sw1_stable = 1;
+uint8_t flash_counter = 0;
 ////////////////////////////////////////////////////////////////////////////////
 // private functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -115,6 +118,7 @@ void main(void) {
                         if (current_program > 4) current_program = 1;
                     }
                 }
+                flash_counter = 0;
             }
             button_pressed = false;
         }
@@ -133,14 +137,15 @@ void main(void) {
                 pwm_cycle(10);
                 break;
             case FLASH:
-                DL1 = 1;
-                __delay_ms(500);
-                DL1 = 0;
-                __delay_ms(500);
+                flash_counter++;
+                if (flash_counter >= FLASH_HALF_PERIOD) {
+                    flash_counter = 0;
+                    DL1 = !DL1;
+                }
                 break;
         }
         
-        if (current_program == OFF || current_program == PRG1) {
+        if (current_program == OFF || current_program == PRG1 || current_program == FLASH) {
             __delay_ms(MS_REFRESH);
         }
     }
