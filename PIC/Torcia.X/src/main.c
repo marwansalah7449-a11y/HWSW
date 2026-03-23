@@ -46,7 +46,7 @@
 
 #define FLASH_HALF_PERIOD 50   
 
-
+uint32_t cnt = 0;
 uint8_t sw1_last = 1;
 uint8_t sw1_counter = 0;
 uint8_t sw1_stable = 1;
@@ -67,87 +67,25 @@ void debounce_sw1(void) {
         }
     }
 }
+
+
 void pwm_cycle(uint8_t duty_percent) {
-    switch(duty_percent) {
-        case 50:  
-            DL1 = 1;
-            __delay_ms(5);
-            DL1 = 0;
-            __delay_ms(5);
-            break;
-        case 10: 
-            DL1 = 1;
-            __delay_ms(1);
-            DL1 = 0;
-            __delay_ms(9);
-            break;
+    if(cnt % 100 == 0){
+        DL1 = 1;
+    }else if(cnt % 100 == duty_percent){
+        DL1 = 0;
+    }
+    if(cnt >= 100000000){
+        cnt = 0;
     }
 }
 void main(void) {
     eh100_init();
     DL1 = 0;
     
-    uint8_t current_program = OFF;
-    uint16_t button_press_counter = 0;
-    bool button_pressed = false;
-    
-    
-    while (1) {
-        debounce_sw1();
-        
-        if (sw1_stable == 0) {
-            if (!button_pressed) {
-                button_pressed = true;
-                
-                button_press_counter = 0;
-            }
-            button_press_counter++;
-        } else {
-            if (button_pressed) {
-                
-                
-                if (button_press_counter >= LONG_PRESS) {
-                    if (current_program == OFF) {
-                        current_program = PRG1;
-                    } else {
-                        current_program = OFF;
-                    }
-                } else {
-                    if (current_program != OFF) {
-                        current_program = (current_program % 4) + 1;
-                        if (current_program > 4) current_program = 1;
-                    }
-                }
-                flash_counter = 0;
-            }
-            button_pressed = false;
-        }
-        
-        switch (current_program) {
-            case OFF:
-                DL1 = 0;
-                break;
-            case PRG1:
-                DL1 = 1;
-                break;
-            case PRG2:
-                pwm_cycle(50);
-                break;
-            case PRG3:
-                pwm_cycle(10);
-                break;
-            case FLASH:
-                flash_counter++;
-                if (flash_counter >= FLASH_HALF_PERIOD) {
-                    flash_counter = 0;
-                    DL1 = !DL1;
-                }
-                break;
-        }
-        
-        if (current_program == OFF || current_program == PRG1 || current_program == FLASH) {
-            __delay_ms(MS_REFRESH);
-        }
+    while(1){
+        pwm_cycle(10);
+        cnt++;
     }
 }
 
