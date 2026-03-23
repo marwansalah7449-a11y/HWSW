@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Lampeggiatore</name>
+            <name>Torcia</name>
             <creation-uuid>5af5f3c4-150d-4023-9dfb-f4fa86169db8</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

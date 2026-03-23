@@ -90,7 +90,7 @@ void main(void) {
     uint8_t current_program = OFF;
     uint16_t button_press_counter = 0;
     bool button_pressed = false;
-    
+    bool button_released = false;
     
     while (1) {
         debounce_sw1();
@@ -98,13 +98,13 @@ void main(void) {
         if (sw1_stable == 0) {
             if (!button_pressed) {
                 button_pressed = true;
-                
+                button_released = false;
                 button_press_counter = 0;
             }
             button_press_counter++;
         } else {
-            if (button_pressed) {
-                
+            if (button_pressed && !button_released) {
+                button_released = true;
                 
                 if (button_press_counter >= LONG_PRESS) {
                     if (current_program == OFF) {
