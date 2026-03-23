@@ -46,7 +46,7 @@
 
 #define FLASH_HALF_PERIOD 50   
 
-uint32_t cnt = 0;
+uint8_t cnt = 0;
 uint8_t sw1_last = 1;
 uint8_t sw1_counter = 0;
 uint8_t sw1_stable = 1;
@@ -69,23 +69,45 @@ void debounce_sw1(void) {
 }
 
 
-void pwm_cycle(uint8_t duty_percent) {
-    if(cnt % 100 == 0){
+void pwm_cycle(uint8_t duty) {
+    if(cnt < duty){
         DL1 = 1;
-    }else if(cnt % 100 == duty_percent){
+    } else {
         DL1 = 0;
     }
-    if(cnt >= 100000000){
+
+    cnt++;
+    if(cnt >= 100){
         cnt = 0;
     }
 }
+
 void main(void) {
     eh100_init();
     DL1 = 0;
+    uint8_t i;
     
+    int8_t direction = 1;
+
     while(1){
-        pwm_cycle(10);
-        cnt++;
+        pwm_cycle(i);
+
+        if(direction == 1){
+            if(i < 100){
+                i++;
+            }else{
+                direction = -1;
+            }
+        } else {
+            if(i > 0){
+                i--;
+            }else{
+                direction = 1;
+            }
+        }
+
+        __delay_ms(10);
     }
+
 }
 
