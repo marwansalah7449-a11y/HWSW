@@ -29,8 +29,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 #define MS_REFRESH 10
 
-#define DEBOUNCE_CYCLES 3
-#define LONG_PRESS 100
+#define DEBOUNCE_CYCLES 20
+#define LONG_PRESS 1000
 
 
 #define H0 output_port.DOUT0
@@ -44,13 +44,14 @@
 #define PRG3 3
 #define FLASH 4
 
-#define FLASH_HALF_PERIOD 50   
+#define FLASH_HALF_PERIOD 500  
 
 
 uint8_t sw1_last = 1;
 uint8_t sw1_counter = 0;
 uint8_t sw1_stable = 1;
 uint8_t flash_counter = 0;
+uint8_t cnt = 0;
 ////////////////////////////////////////////////////////////////////////////////
 // private functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -67,22 +68,20 @@ void debounce_sw1(void) {
         }
     }
 }
-void pwm_cycle(uint8_t duty_percent) {
-    switch(duty_percent) {
-        case 50:  
-            DL1 = 1;
-            __delay_ms(5);
-            DL1 = 0;
-            __delay_ms(5);
-            break;
-        case 10: 
-            DL1 = 1;
-            __delay_ms(1);
-            DL1 = 0;
-            __delay_ms(9);
-            break;
+
+void pwm_cycle(uint8_t duty) {
+    if(cnt < duty/10){
+        DL1 = 1;
+    } else {
+        DL1 = 0;
+    }
+
+    cnt++;
+    if(cnt >= 10){
+        cnt = 0;
     }
 }
+
 void main(void) {
     eh100_init();
     DL1 = 0;
@@ -116,6 +115,7 @@ void main(void) {
                     if (current_program != OFF) {
                         current_program = (current_program % 4) + 1;
                         if (current_program > 4) current_program = 1;
+
                     }
                 }
                 flash_counter = 0;
@@ -144,10 +144,7 @@ void main(void) {
                 }
                 break;
         }
-        
-        if (current_program == OFF || current_program == PRG1 || current_program == FLASH) {
-            __delay_ms(MS_REFRESH);
-        }
+        __delay_ms(1);
     }
 }
 
