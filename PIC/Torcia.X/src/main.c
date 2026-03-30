@@ -147,7 +147,7 @@ void choose_pwm(uint8_t current_program){
 void main(void) {
     eh100_init();
     DL1 = 0;
-        
+    
     while (1) {
         debounce_sw1(); //debouncing sw1
                
