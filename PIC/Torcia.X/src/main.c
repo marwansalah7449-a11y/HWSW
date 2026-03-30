@@ -7,7 +7,7 @@
 //
 // File:   main.c
 // Author: Salah Marwan
-// Description:
+// Description: sistema di controllo per una torcia
 ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -50,8 +50,12 @@
 uint8_t sw1_last = 1;
 uint8_t sw1_counter = 0;
 uint8_t sw1_stable = 1;
-uint8_t flash_counter = 0;
+uint16_t flash_counter = 0;
 uint8_t cnt = 0;
+
+uint8_t current_program = OFF;
+uint16_t button_press_counter = 0;
+bool button_pressed = false;
 ////////////////////////////////////////////////////////////////////////////////
 // private functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -82,19 +86,8 @@ void pwm_cycle(uint8_t duty) {
     }
 }
 
-void main(void) {
-    eh100_init();
-    DL1 = 0;
-    
-    uint8_t current_program = OFF;
-    uint16_t button_press_counter = 0;
-    bool button_pressed = false;
-    
-    
-    while (1) {
-        debounce_sw1();
-        
-        if (sw1_stable == 0) {
+uint8_t choose_program(uint8_t sw1_stable){
+    if (sw1_stable == 0) {
             if (!button_pressed) {
                 button_pressed = true;
                 
@@ -122,8 +115,11 @@ void main(void) {
             }
             button_pressed = false;
         }
-        
-        switch (current_program) {
+    return current_program;
+}
+
+void choose_pwm(uint8_t current_program){
+    switch (current_program) {
             case OFF:
                 DL1 = 0;
                 break;
@@ -144,7 +140,26 @@ void main(void) {
                 }
                 break;
         }
-        __delay_ms(1);
-    }
 }
 
+void main(void) {
+    eh100_init();
+    DL1 = 0;
+    
+
+    
+    
+    while (1) {
+        debounce_sw1(); //debouncing sw1
+        
+       
+        current_program = choose_program(sw1_stable); //salva il programma 
+        
+        choose_pwm(current_program); // esegue il programma
+        
+        __delay_ms(1); //delay per i contatori
+
+
+
+    }
+}
