@@ -52,21 +52,24 @@ void main(void) {
     while (1) {
         
         if(START){
-            CYCLE = 1;
+            CYCLE = 1;  //led indica che il ciclo è iniziato
+            
+            //fase 1: apro E1 e chiudo tutto il resto
             E3 = 0;   
             E1 = 1;   
             E2 = 0;
             M  = 0;
-            while (S2 == 0);
+            while (S2 == 0); //aspetto che il serbatoio si riempa fino a S2
             
+            //fase 2: accendo motore, apro E2 e chiudo E1
             E1 = 0;
             E2 = 1;
             M  = 1;  
-            while (S3 == 0);
+            while (S3 == 0); // aspetto che il serbatoio si riempa fino a S3
             
+            //fase 3: chiudo E1 e E2, apro E3
             E2 = 0;
-            E3 = 1;
-            
+            E3 = 1;            
             while (S1 == 1) {      
                 M = (S2 == 1);
             }
