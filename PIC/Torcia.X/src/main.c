@@ -27,35 +27,37 @@
 ////////////////////////////////////////////////////////////////////////////////
 // constants
 ////////////////////////////////////////////////////////////////////////////////
-#define MS_REFRESH 10
 
+//define time constants
+#define MS_REFRESH 10
+#define FLASH_HALF_PERIOD 500 
 #define DEBOUNCE_CYCLES 20
 #define LONG_PRESS 1000
 
-
+//define IO pins
 #define H0 output_port.DOUT0
 #define H1 output_port.DOUT1
 #define SW1 sw_port.SW1
 #define DL1 led_port.DL1
 
+// define programs
 #define OFF 0
 #define PRG1 1
 #define PRG2 2
 #define PRG3 3
 #define FLASH 4
 
-#define FLASH_HALF_PERIOD 500  
+//define general variables
+uint8_t sw1_last = 1; //last state of sw1
+uint8_t sw1_counter = 0; //counts the times sw1 changes its state
+uint8_t sw1_stable = 1; //stable state of sw1(debounced)
+uint16_t flash_counter = 0; //counter for FLASH mode
+uint8_t cnt = 0; //pwm counter
 
+uint8_t current_program = OFF; //current program
+uint16_t button_press_counter = 0; // counts the cycles sw1 is pressed
+bool button_pressed = false; 
 
-uint8_t sw1_last = 1;
-uint8_t sw1_counter = 0;
-uint8_t sw1_stable = 1;
-uint16_t flash_counter = 0;
-uint8_t cnt = 0;
-
-uint8_t current_program = OFF;
-uint16_t button_press_counter = 0;
-bool button_pressed = false;
 ////////////////////////////////////////////////////////////////////////////////
 // private functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -145,21 +147,15 @@ void choose_pwm(uint8_t current_program){
 void main(void) {
     eh100_init();
     DL1 = 0;
-    
-
-    
-    
+        
     while (1) {
         debounce_sw1(); //debouncing sw1
+               
+        current_program = choose_program(sw1_stable); //save the current program
         
-       
-        current_program = choose_program(sw1_stable); //salva il programma 
+        choose_pwm(current_program); //sends the right pwm to the output(DL1)
         
-        choose_pwm(current_program); // esegue il programma
-        
-        __delay_ms(1); //delay per i contatori
-
-
+        __delay_ms(1); //delay to estimate time with cycle counts
 
     }
 }
