@@ -177,6 +177,9 @@ void main(){
                 }else if (SW_PRESSED == led_port.LED && SW_check()){
                     activeTimeCnt = 0;
                     state = ST_WIN_MATCH;
+                }else if (SW_check()){
+                    activeTimeCnt = 0;
+                    state = ST_LOOSE_MATCH;
                 }
                 break;
                 
