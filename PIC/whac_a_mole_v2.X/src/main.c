@@ -162,9 +162,11 @@ void main(){
                 break;
                 
             case ST_W_RND:
+                __delay_ms(10);
                 DL1 = DL2 = DL3 = DL4 = 0;
                 random_wait(score);
                 random_mole();
+                
                 state = ST_W_HAMMER;
                 break;
                 
@@ -189,6 +191,8 @@ void main(){
                 break;
                 
             case ST_WIN_MATCH:
+                DL1 = DL2 = DL3 = DL4 = 1;
+                
                 match++;
                 score = score + SCORE_INCR;
                 // -20ms per ogni punto fatto
