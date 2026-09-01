@@ -11,7 +11,6 @@ int main(){
             
             if (i % j == 0) {
                 primo = 0;
-                break;
             }           
         }
 
