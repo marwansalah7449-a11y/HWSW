@@ -1,5 +1,10 @@
 
-
+/**
+ * @file helloworld.c
+ * @brief Stampa "Hello, World!" per ogni numero primo da 1 a 999.
+ * @name Marwan Salah
+ * @date 05.09.2026
+ */
 #include <stdio.h>
 
 int main(){
@@ -21,3 +26,5 @@ int main(){
     }
     
 }
+
+//sistemare header, implementare la funzione di controllo dei numeri primi, ogni funzione deve avere un commento doxygen.

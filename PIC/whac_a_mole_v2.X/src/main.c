@@ -165,8 +165,7 @@ void main(){
                 __delay_ms(10);
                 DL1 = DL2 = DL3 = DL4 = 0;
                 random_wait(score);
-                random_mole();
-                
+                random_mole();                
                 state = ST_W_HAMMER;
                 break;
                 
