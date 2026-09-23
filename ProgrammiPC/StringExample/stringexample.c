@@ -7,17 +7,25 @@
 
  #include <stdio.h>
 
+bool is_lower(char c) {
+    return (c >= 'a' && c <= 'z');
+}
+
+char to_upper(char c) {
+    if (is_lower(c)) {
+        return c - 32;
+    }
+    return c;
+}
 
  int main() {
     char str[] = "Hello, World";
     char *ptr = str;
 
     while(*ptr) {
-        if (*ptr >= 'a' && *ptr <= 'z') {
-            *ptr = *ptr - 32; 
-        }
-        ptr++;
+       printf("%c", to_upper(*ptr));
+       ptr++;
     }
-    printf("%s\n", str);
-    
+    printf("\n");
+
 }
