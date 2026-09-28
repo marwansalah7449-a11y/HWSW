@@ -5,7 +5,6 @@
  * @date 28.09.2026
  */
 #include <stdio.h>
-#include <string.h>
 
 #define MIN_SIZE 2
 #define MAX_SIZE 200
@@ -17,7 +16,12 @@
  * @return 1 se il codice ha una lunghezza valida, 0 altrimenti
  */
 int check_size(char *code) {
-    size_t lunghezza = strlen(code);
+    int lunghezza = 0;
+
+    while (*code != '\0') {
+        lunghezza++;
+        code++;
+    }
 
     return lunghezza >= MIN_SIZE && lunghezza <= MAX_SIZE;
 }
@@ -29,7 +33,7 @@ int check_size(char *code) {
  * @return 1 se il codice contiene solo cifre, 0 altrimenti
  */
 int check_chars(char *code) {
-    while (*code) {
+    while (*code != '\0') {
         if (*code < '0' || *code > '9') {
             return 0;
         }
@@ -48,7 +52,7 @@ int check_chars(char *code) {
 int get_crc(char *code) {
     int somma = 0;
 
-    while (*code && *(code + 1)) {
+    while (*code != '\0' && *(code + 1) != '\0') {
         somma += *code - '0';
         code++;
     }
@@ -58,14 +62,21 @@ int get_crc(char *code) {
 
 int main(void) {
     char code[MAX_SIZE + 2];
+    int lunghezza = 0;
+    int c;
 
     printf("Digita un codice: ");
-    if (fgets(code, sizeof(code), stdin) == NULL) {
-        code[0] = '\0';
+    c = getchar();
+    while (c != '\n' && c != EOF) {
+        if (lunghezza <= MAX_SIZE) {
+            code[lunghezza] = c;
+            lunghezza++;
+        }
+        c = getchar();
     }
-    code[strcspn(code, "\r\n")] = '\0';
+    code[lunghezza] = '\0';
 
-    if (check_size(code) && check_chars(code) && get_crc(code) == code[strlen(code) - 1] - '0') {
+    if (check_size(code) && check_chars(code) && get_crc(code) == code[lunghezza - 1] - '0') {
         printf("Codice valido\n");
     } else {
         printf("Codice non valido\n");
