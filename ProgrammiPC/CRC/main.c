@@ -1,6 +1,6 @@
 /**
  * @file checker.c
- * @brief Chiede un codice prodotto e verifica che sia valido controllandone lunghezza, caratteri e CRC.
+ * @brief Chiede un codice e verifica che sia valido controllando lunghezza, caratteri e CRC.
  * @author Marwan Salah
  * @date 28.09.2026
  */
@@ -10,10 +10,10 @@
 #define MAX_SIZE 200
 
 /**
- * @brief Controlla che il codice sia lungo da MIN_SIZE a MAX_SIZE caratteri, CRC compreso.
+ * @brief Controlla che il codice sia lungo da MIN_SIZE a MAX_SIZE caratteri.
  *
  * @param code puntatore alla stringa del codice
- * @return 1 se il codice ha una lunghezza valida, 0 altrimenti
+ * @return 1 se il codice ha una lunghezza valida, altrimenti 0 
  */
 int check_size(char *code) {
     int lunghezza = 0;
@@ -30,7 +30,7 @@ int check_size(char *code) {
  * @brief Controlla che ogni carattere del codice sia una cifra da '0' a '9'.
  *
  * @param code puntatore alla stringa del codice
- * @return 1 se il codice contiene solo cifre, 0 altrimenti
+ * @return 1 se il codice contiene solo cifre, altrimenti 0 
  */
 int check_chars(char *code) {
     while (*code != '\0') {
@@ -60,7 +60,7 @@ int get_crc(char *code) {
     return somma % 10;
 }
 
-int main(void) {
+int main() {
     char code[MAX_SIZE + 2];
     int lunghezza = 0;
     int c;
@@ -82,5 +82,5 @@ int main(void) {
         printf("Codice non valido\n");
     }
 
-    return 0;
+    
 }
