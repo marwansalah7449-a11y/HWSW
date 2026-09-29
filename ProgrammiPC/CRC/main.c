@@ -2,7 +2,7 @@
  * @file checker.c
  * @brief Chiede un codice e verifica che sia valido controllando lunghezza, caratteri e CRC.
  * @author Marwan Salah
- * @date 28.09.2026
+ * @date 26.09.2026
  */
 #include <stdio.h>
 
