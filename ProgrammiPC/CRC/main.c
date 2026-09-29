@@ -67,7 +67,7 @@ int main() {
 
     printf("Digita un codice: ");
     c = getchar();
-    while (c != '\n' && c != EOF) {
+    while (c != '\n') {
         if (lunghezza <= MAX_SIZE) {
             code[lunghezza] = c;
             lunghezza++;
