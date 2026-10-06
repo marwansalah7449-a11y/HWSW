@@ -9,6 +9,19 @@
 #define MIN_SIZE 2
 #define MAX_SIZE 200
 
+char get_random_char() {
+    return '0' + (rand() % 10);
+}
+
+char* get_random_str(int len){
+    char str[len + 1];
+    for (int i = 0; i < len; i++) {
+        str[i] = get_random_char(); 
+    }
+    str[len] = '\0';
+    return str;
+}
+
 /**
  * @brief Controlla che il codice sia lungo da MIN_SIZE a MAX_SIZE caratteri.
  *
