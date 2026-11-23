@@ -17,10 +17,12 @@ int seconda_condizione() {
 }
 
 int main() {
+	
 	if (prima_condizione() && seconda_condizione()) {
-		printf("Entrambe vere\n");
+		printf("Entrambe le condizioni sono vere\n");
 	} else {
-		printf("Non sono entrambe vere\n");
+		printf("Almeno una condizione è falsa\n");
 	}
 
+	return 0;
 }
